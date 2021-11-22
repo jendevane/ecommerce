@@ -33,19 +33,19 @@ router.get('/:id', (req, res) => {
       attributes: ['category_id']
     }
   })
-  .then(dbCategoryData => {
-    if (!dbCategoryData) {
-      res.status(404).json({ message: 'No catagory found with this ID' });
-      return;
-    }
-    res.json(dbCategoryData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(dbCategoryData => {
+      if (!dbCategoryData) {
+        res.status(404).json({ message: 'No category found with this ID' });
+        return;
+      }
+      res.json(dbCategoryData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   // be sure to include its associated Products
-
+});
 
 router.post('/', (req, res) => {
   // create a new category
@@ -98,7 +98,6 @@ router.delete('/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-});
 });
 
 module.exports = router;
